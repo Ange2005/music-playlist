@@ -1,122 +1,73 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import "./style.css";
+
+const songs = [
+  ["Kalimutan Ka","Skusta Clee","https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021b463d79605f00026aa6bf1e"],
+  ["Give Your Heart a Break","Demi Lovato","https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0283fc43cfc25d836e17f8cc30"],
+  ["Give Me Everything","Pitbull, AFROJACK, Ne-Yo, Nayer","https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021dc7483a9fcfce54822a2f19"],
+  ["Middle","DJ Snake, Bipolar Sunshine","https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02212d776c31027c511f0ee3bc"],
+  ["Va Va Voom","Nicki Minaj","https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ef9ad61e2a4f15606fd4ab15"],
+  ["Talking Body","Tove Lo","https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025bb90a21a829668b348fa440"],
+  ["Judas","Lady Gaga","https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a5d31644260279be8d0c46c0"],
+  ["Die Young","Kesha","https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02edcab0fe7cf29d17751dad18"]
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
 
-      <div className="ticks"></div>
+      <aside>
+        <h2>♫ MyMusic</h2>
+        <p>⌂ Home</p>
+        <p>⌕ Search</p>
+        <p>♡ Liked Songs</p>
+      </aside>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <main>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <header>
+          <input placeholder="Search songs or artists..." />
+          <span>Jaja ♡</span>
+        </header>
+
+        <section className="hero">
+          <img src={songs[0][2]} />
+
+          <div>
+            <small>PLAYLIST</small>
+            <h1>My Favorite Songs</h1>
+            <p>A collection of songs I love.</p>
+          </div>
+        </section>
+
+        <div className="controls">
+          <div className="play">▶</div>
+          <span>♡</span>
+          <span>•••</span>
+        </div>
+
+        {songs.map((s, i) => (
+          <div className="song" key={s[0]}>
+
+            <span>{i + 1}</span>
+
+            <div className="title">
+              <img src={s[2]} />
+
+              <div>
+                <b>{s[0]}</b>
+                <small>{s[1]}</small>
+              </div>
+            </div>
+
+            <span>My Favorites</span>
+            <span>♡</span>
+
+          </div>
+        ))}
+
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
